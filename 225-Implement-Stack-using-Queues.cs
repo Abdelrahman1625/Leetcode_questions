@@ -3,7 +3,7 @@ public class MyStack {
     private Queue<int> queue1;
     private Queue<int> queue2;
 
-    public MyStack() { // Only one constructor definition needed
+    public MyStack() { 
         queue1 = new Queue<int>();
         queue2 = new Queue<int>();
     }
