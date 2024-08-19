@@ -1,20 +1,20 @@
 public class Solution {
     public int[] AsteroidCollision(int[] asteroids) {
-        var stack = new Stack<int>();
+        var s = new Stack<int>();
 
         foreach (int asteroid in asteroids)
         {
             bool destroy = false;
-            while (stack.Count > 0 && asteroid < 0 && stack.Peek() > 0)
+            while (s.Count > 0 && asteroid < 0 && s.Peek() > 0)
             {
-                if (stack.Peek() < Math.Abs(asteroid))
+                if (s.Peek() < Math.Abs(asteroid))
                 {
-                    stack.Pop();
+                    s.Pop();
                     continue;
                 }
-                else if (stack.Peek() == Math.Abs(asteroid))
+                else if (s.Peek() == Math.Abs(asteroid))
                 {
-                    stack.Pop();
+                    s.Pop();
                 }
                 destroy = true;
                 break;
@@ -22,10 +22,10 @@ public class Solution {
 
             if (!destroy)
             {
-                stack.Push(asteroid);
+                s.Push(asteroid);
             }
         }
 
-        return stack.Reverse().ToArray();
+        return s.Reverse().ToArray();
     }
 }
