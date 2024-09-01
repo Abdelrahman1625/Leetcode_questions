@@ -1,18 +1,18 @@
 public class Solution {
     public int FindPeakElement(int[] nums) {
-        int left = 0;
-        int right = nums.Length - 1;
+        int l = 0;
+        int r = nums.Length - 1;
         
-        while (left < right) {
-            int mid = left + (right - left) / 2;
+        while (l < r) {
+            int i = l + (r - l) / 2;
             
-            if (nums[mid] > nums[mid + 1]) {
-                right = mid;
+            if (nums[i] > nums[i + 1]) {
+                r = i;
             } else {
-                left = mid + 1;
+                l = i + 1;
             }
         }
         
-        return left;
+        return l;
     }
 }
