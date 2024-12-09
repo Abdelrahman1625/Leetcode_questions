@@ -1,15 +1,17 @@
 public class Solution {
     public int[] TwoSum(int[] numbers, int target) {
-        for (var i = 0; i < numbers.Length; i++)
+        int l = 0; 
+        int r = numbers.Length - 1;
+        while(l < r)
         {
-            for (var j = 1; j < numbers.Length; j++)
-            {
-                if((numbers[i] + numbers[j] == target) && (i != j))
-                {
-                    return [i + 1 ,j + 1];
-                }
-            }
+            int sum = numbers[l] + numbers[r];
+            if(sum == target)
+                return new int[] {l+1, r+1};
+            else if(sum <= target)
+                l++;
+            else
+                r--;
         }
-        return [0];
+        return new int[2];
     }
 }
