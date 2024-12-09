@@ -1,34 +1,19 @@
 public class Solution {
     public bool IsPalindrome(string s) {
-        var lastIndex = s.Length-1;
-        bool result = true;
-        for (int i = 0; i < s.Length ; i++)
-        {
-            if (!IsEqual(s, ref i, ref lastIndex))
-            {
-                result = false;
-                break;
-            }
-            lastIndex--;
+        int l = 0, r = s.Length - 1;
+        
+        while (l < r) {
+            while (l < r && !(s[l] >= 'a' && s[l] <= 'z') && !(s[l] >= 'A' && s[l] <= 'Z') 
+            && !(s[l] >= '0' && s[l] <= '9')) 
+                l++;
+            while (l < r && !(s[r] >= 'a' && s[r] <= 'z') && !(s[r] >= 'A' && s[r] <= 'Z') 
+            && !(s[r] >= '0' && s[r] <= '9')) 
+                r--;
+            if (char.ToLowerInvariant(s[l]) != char.ToLowerInvariant(s[r]))
+                return false;
+            l++;
+            r--;
         }
-        return result;
-    }
-    public bool IsEqual(string s, ref int i, ref int j)
-    {
-        if (i > s.Length - 1 || j < 0)
-        {
-            return true;
-        }
-        if (!char.IsLetterOrDigit(s[i]))
-        {
-            i++;
-            return IsEqual(s, ref i, ref j);
-        }
-        if (!char.IsLetterOrDigit(s[j]))
-        {
-            j--;
-            return IsEqual(s, ref i, ref j);
-        }
-        return char.ToLower(s[i]) == char.ToLower(s[j]);
+        return true;
     }
 }
