@@ -9,14 +9,20 @@
 
 public class Solution {
     public bool HasCycle(ListNode head) {
-        ListNode slow_pointer = head, fast_pointer = head;
-        while (fast_pointer != null && fast_pointer.next != null) {
-            slow_pointer = slow_pointer.next;
-            fast_pointer = fast_pointer.next.next;
-            if (slow_pointer == fast_pointer) {
+        if (head == null || head.next == null) return false;
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
                 return true;
             }
         }
+
         return false;
     }
 }
